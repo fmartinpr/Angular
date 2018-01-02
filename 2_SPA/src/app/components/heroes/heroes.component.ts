@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   selector: 'app-heroes',
   templateUrl: './heroes.component.html'
 })
-export class HeroesComponent implements OnInit {
+export class HeroesComponent implements OnInit{
 
   heroes:Heroe[] = [];
 
@@ -15,7 +15,7 @@ export class HeroesComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnInit(){
     this.heroes = this._heroesService.getHeroes();
   }
 
