@@ -31,4 +31,6 @@ export class AppComponent {
 
   video = "_xypgGbBsck";
 
+  activar:boolean=true;
+
 }
