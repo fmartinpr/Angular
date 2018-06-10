@@ -4,6 +4,10 @@ body{
   color: white !important;
 }
 
+p, h5{
+  color: black;
+}
+
 hr{
   border-color: white;
 }
