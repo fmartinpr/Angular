@@ -7,6 +7,8 @@ import { SpotifyService } from '../../services/spotify.service';
   styles: []
 })
 export class SearchComponent{
+  public artistas:any[] = [];
+
   constructor(public _spotify: SpotifyService) {
 
   }
@@ -16,8 +18,7 @@ export class SearchComponent{
     if(termino && termino.length > 0){
       console.log(termino);
       this._spotify.getArtistas(termino).subscribe(artistas =>{
-        //console.log('La respuesta ya esta lista!');
-        //console.log(artistas);
+        this.artistas = artistas;
       });
     }
   }

@@ -13,11 +13,11 @@ export class ArtistComponent implements OnInit {
               public _sportify:SpotifyService) { }
 
   ngOnInit() {
-    this._activatedRoute.params
+    /*this._activatedRoute.params
       .map(params=>params['id'])
       .subscribe(id=>{
         console.log(id);
-    });
+    });*/
   }
 
 }

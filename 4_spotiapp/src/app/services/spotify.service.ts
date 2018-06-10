@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  map } from 'rxjs/operators';
 
+const token = 'BQBosqVAUM2CZLc9Sa-wiFr23g7xbVLhNGY95cU6xqPQmPfvwBD20nLro9SWKpNZal8Bsr2MUScADa-Ob2I';
 @Injectable()
 export class SpotifyService {
   client_id = "66cfa36061f04c3bbbb798ae6fd1dc26";
   client_secret = "7f5e080bd2094124891cae46bafe0641";
-
-  artistas:any[] = [];
-
+  
   constructor(public _HttpClient:HttpClient) {
     console.log('Servicio spotify listo');
   }
@@ -39,7 +38,7 @@ export class SpotifyService {
   }*/
 
   private headers = new HttpHeaders({
-    'Authorization':'Bearer BQAHv1RLfS1qcL1QDJr9INWOZCgd7BMhQF-miKemfKLT5GQ_vHBiRaF0yNK3Tg-5SvZaftonkOwSWhLaMiE'
+    'Authorization':'Bearer ' + token
   });
 
   getNewReleases(){
