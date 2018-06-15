@@ -11,7 +11,7 @@ export class SinfotoPipe implements PipeTransform {
     if(!imagenes){
       return noimage;
     }else{
-      return (imagenes.length > 0)?imagenes[1].url:noimage;
+      return (imagenes.length > 0)?imagenes[0].url:noimage;
     }
   }
 

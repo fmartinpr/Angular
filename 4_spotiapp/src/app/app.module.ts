@@ -13,6 +13,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { app_routing } from './app.routes';
 import { SinfotoPipe } from './pipes/sinfoto.pipe';
 import { ArtistComponent } from './components/artist/artist.component';
+import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ArtistComponent } from './components/artist/artist.component';
     SearchComponent,
     NavbarComponent,
     SinfotoPipe,
-    ArtistComponent
+    ArtistComponent,
+    TarjetasComponent
   ],
   imports: [
     BrowserModule,

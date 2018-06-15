@@ -8,12 +8,5 @@
          (keyup)="buscarArtista(termino.value)">
     </div>
   </div>
-  <div class="row top30" >
-    <div *ngFor="let artista of artistas"
-          class="col-md-3 text-center puntero"
-          [routerLink]="['/artist',artista.id]">
-      <img [src]="artista.images | sinfoto" class="img-thumbnail">
-      <p>{{artista.name}}</p>
-    </div>
-  </div>
+  <app-tarjetas [items]=artistas></app-tarjetas>
 </div>
