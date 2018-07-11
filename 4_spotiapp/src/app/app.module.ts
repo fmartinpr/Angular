@@ -14,6 +14,7 @@ import { app_routing } from './app.routes';
 import { SinfotoPipe } from './pipes/sinfoto.pipe';
 import { ArtistComponent } from './components/artist/artist.component';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
     NavbarComponent,
     SinfotoPipe,
     ArtistComponent,
-    TarjetasComponent
+    TarjetasComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

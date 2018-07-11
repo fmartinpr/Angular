@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Pipe } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  map } from 'rxjs/operators';
 
-const token = 'BQCl2VK1iznWAwfWpiLx1Z-1E7r5_stWC-rAUjbyEVSTE2226sp4Q362FHP9Qe6MDvAxv_glvU0E8mCM_co';
+const token = 'BQBzug0QOW2sgKzOcfdQJuSRlWqFQaNt56qclw9tpncO253i4GvysBSKpiyBl0BBHH5LkXahaqR25b-HxcM';
 @Injectable()
 export class SpotifyService {
-  client_id = "66cfa36061f04c3bbbb798ae6fd1dc26";
-  client_secret = "7f5e080bd2094124891cae46bafe0641";
+  // client_id = '66cfa36061f04c3bbbb798ae6fd1dc26';
+  // client_secret = "7f5e080bd2094124891cae46bafe0641";
 
-  constructor(public _HttpClient:HttpClient) {
+  constructor(public _HttpClient: HttpClient) {
     console.log('Servicio spotify listo');
   }
 
@@ -37,26 +37,37 @@ export class SpotifyService {
         });
   }*/
 
-  getQuery(query:string){
+  getQuery(query: string) {
     const url = `https://api.spotify.com/v1/${query}`;
 
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token
+      'Authorization': 'Bearer ' + token
     });
 
-    return this._HttpClient.get(url,{headers:headers});
+    return this._HttpClient.get(url, {headers: headers});
   }
 
-  getNewReleases(){
+  getNewReleases() {
       return this.getQuery('browse/new-releases?limit=20').pipe(
         map(data => data['albums'].items)
       );
   }
 
-  getArtistas(termino:string){
+  getArtistas(termino: string) {
     return this.getQuery(`search?query=${termino}&type=artist&limit=20`).pipe(
       map(data =>
       data['artists'].items)
+    );
+  }
+
+  getArtista(id: string) {
+    return this.getQuery(`artists/${id}`);
+  }
+
+  getTopTracks(id: string) {
+    return this.getQuery(`artists/${id}/top-tracks?country=ES`).pipe(
+      map(data =>
+      data['tracks'])
     );
   }
 
