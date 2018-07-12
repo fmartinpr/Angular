@@ -12,9 +12,11 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 import { app_routing } from './app.routes';
 import { SinfotoPipe } from './pipes/sinfoto.pipe';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { ArtistComponent } from './components/artist/artist.component';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
+import { AlertErrorComponent } from './components/alert-error/alert-error.component';
 
 
 @NgModule({
@@ -24,9 +26,11 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
     SearchComponent,
     NavbarComponent,
     SinfotoPipe,
+    DomseguroPipe,
     ArtistComponent,
     TarjetasComponent,
-    LoadingComponent
+    LoadingComponent,
+    AlertErrorComponent
   ],
   imports: [
     BrowserModule,

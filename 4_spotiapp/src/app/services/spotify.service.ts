@@ -2,7 +2,7 @@ import { Injectable, Pipe } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  map } from 'rxjs/operators';
 
-const token = 'BQBzug0QOW2sgKzOcfdQJuSRlWqFQaNt56qclw9tpncO253i4GvysBSKpiyBl0BBHH5LkXahaqR25b-HxcM';
+const token = 'BQAAvMKpTonFULzPd9NpAKiVR9rE1czWA1nMoaRjWrCh7zoBRFD6VqG0WDN7IfB5irsRmue3FCjr4lNnHqw';
 @Injectable()
 export class SpotifyService {
   // client_id = '66cfa36061f04c3bbbb798ae6fd1dc26';

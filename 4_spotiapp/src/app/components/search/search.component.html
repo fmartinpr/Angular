@@ -1,13 +1,10 @@
 <div class="contaniner top30">
-  <div class="row">
-    <div class="col">
-      <input type="text"
-         #termino
-         placeholder="Busque artista..."
-         class="form-control"
-         (keyup)="buscarArtista(termino.value)">
+    <div class="row">
+        <div class="col">
+            <input type="text" #termino placeholder="Busque artista..." class="form-control" (keyup)="buscarArtista(termino.value)">
+        </div>
     </div>
-  </div>
-  <app-loading *ngIf="loading" class="m-5"></app-loading>
-  <app-tarjetas *ngIf="!loading" [items]=artistas></app-tarjetas>
+    <app-alert-error [error]=error [msgError]=msgError></app-alert-error>
+    <app-loading *ngIf="loading" class="m-5"></app-loading>
+    <app-tarjetas *ngIf="!loading" [items]=artistas></app-tarjetas>
 </div>
