@@ -1,0 +1,32 @@
+- Instalar nodejs.
+https://nodejs.org/es/
+
+- Instalar npm con la ultima versión
+npm install-g npm@latest
+
+- Instalar Angular Cli
+npm install -g @angular/cli@latest
+
+- Crear proyecto en la carpeta contenedora creando el módulo de rutas
+ng new [nombre_proyecto] --routing
+
+- Iniciar el servidor en el navegador
+ng serve -o
+
+- Crear un servicio omitiendo los test y generando el servicio en la carpeta donde nos 
+  encontremos
+ng g s [nombre_servicio] --skipTests --flat
+
+- Crear una clase en una carpeta
+ng g class [nombre_clase] --skipTests --flat
+
+- Crear un componente en una carpeta omitiendo los test
+ng g c [nombre_componente] --skipTests --flat
+
+- Instalar bootstrap
+npm install bootstrap
+* En el fichero angular.json, en styles, despues de styles.css
+ "styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
