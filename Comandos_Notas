@@ -2,7 +2,7 @@
 https://nodejs.org/es/
 
 - Instalar npm con la ultima versión
-npm install-g npm@latest
+npm install -g npm@latest
 
 - Instalar Angular Cli
 npm install -g @angular/cli@latest
