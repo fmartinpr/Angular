@@ -1,3 +1,9 @@
-<p>
-  detalle-producto works!
-</p>
+<div *ngIf="producto">
+    <div class="container">
+        <p><b>Nombre del producto: </b>{{producto.nombre}}</p>
+        <p><b>Precio del producto: </b>{{producto.precio}} €</p>
+        <div>
+            <button class="btn btn-primary" (click)="volver()">Volver</button>
+        </div>
+    </div>
+</div>
