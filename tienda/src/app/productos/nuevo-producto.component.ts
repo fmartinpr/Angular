@@ -21,21 +21,30 @@ export class NuevoProductoComponent implements OnInit {
 
   mensajeOk = '';
 
-  constructor() { }
+  constructor(private productoService: ProductoService) { }
 
-  ngOnInit(private productoService: ProductoService) {
+  ngOnInit() {
   }
 
   onCreate(): void {
     this.productoService.crear(this.form).subscribe(
       data => {
-        this.mensajeOk = data.mensaje;
+        this.mensajeOk = 'Producto creado';
+        console.log(data);
         this.creado = true;
         this.failProducto = false;
-      }, 
-      (err: ANY)
-      
+      },
+      (err: any) => {
+        console.log(err);
+        this.mensajeFail = err.error.mensaje;
+        this.creado = false;
+        this.failProducto = true;
+      }
     );
+  }
+
+  volver(): void {
+    window.history.back();
   }
 
 }

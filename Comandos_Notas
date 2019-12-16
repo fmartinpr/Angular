@@ -24,9 +24,62 @@ ng g class [nombre_clase] --skipTests --flat
 ng g c [nombre_componente] --skipTests --flat
 
 - Instalar bootstrap
+
 npm install bootstrap
 * En el fichero angular.json, en styles, despues de styles.css
  "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
+			
+
+- Servicios
+
+* Método Observable
+const cabecera = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+private url = '[ruta_api]';
+public [nombre_metodo]([p1:t1, p2:t2, ...]): Observable<[objeto_devuelto]> {
+	return this.httpClient.[metodo_http]<[objeto_devuelto]>(this.url + 
+		`[ruta]/${[p1]}/{[p2]/...}`, [objeto_body] cabecera);
+}
+
+* Método subcriptor del servicio
+public [nombre_metodo](): void{
+	this.[objeto_servicio].[metodo_observable]([p1:t1, p2:t2, ...]).subcribe(
+		data=>{},
+		(err: any)=>{
+			this.mensajeFail = err.error;
+		}
+	);
+}
+
+
+- Rutas
+
+* app.routing.module.ts
+const routes: Routes = [
+	{path: '', component: [objeto_inicio_componet]},
+	{path: 'home', component: [objeto_inicio_componet]},
+	{path: '[nombre_pagina]/:[p1]', component: [objeto_componet]},
+	{path: '**', redirectTo: 'home', pathMatch: 'full'}
+];
+
+* Component
+constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
+ngOnInit() {
+    const id = this.activatedRoute.snapshot.params.[p1];
+}
+[metodo_volver](): void {
+    window.history.back();
+}
+[metodo_redirigir_pagina]([p1]:[objeto]){
+	this.router.navigate(['/[path]',[p1]);
+}
+
+* Gestion en páginas
+<a class="nav-link" routerLink="[path]">[texto_enlace]</a>
+<button class="btn btn-primary" routerLink="/[detalle]/{{[p1]}}">[texto_boton]</button>
+
+
