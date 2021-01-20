@@ -1,2 +1,10 @@
-<button>TYPESCRIPT</button>
-<router-outlet></router-outlet>
+<button (click)="viewTipeScript()">TYPESCRIPT</button>
+<button (click)="viewAplicacion1()">Aplicación #1: HolaMundo</button>
+<button (click)="viewAplicacion2()">Aplicación #2: Aplicación 1 Página</button>
+<button (click)="viewAplicacion3()">Aplicación #3: Pipes</button>
+<button (click)="viewAplicacion4()">Aplicación #4: SpotiApp </button>
+<button (click)="viewAplicacion6()">Aplicación #6: Misceláneos</button>
+<app-navbar *ngIf=isViewNavbarHeroes></app-navbar>
+<div class="container main-container">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,8 @@
+<div class="body">
+    <app-navbar-sportiapp (vistaSeleccionada)='setVista($event)'></app-navbar-sportiapp>
+    <div class="mt-1">
+        <app-home-sportiapp *ngIf="vista==='home'" (vistaSeleccionada)='setVista($event)' (artistaIdSeleccionado)='setArtistaId($event)'></app-home-sportiapp>
+        <app-search *ngIf="vista==='search'" (vistaSeleccionada)='setVista($event)' (artistaIdSeleccionado)='setArtistaId($event)'></app-search>
+        <app-artista *ngIf="vista==='artista'" (vistaSeleccionada)='setVista($event)' [artistaId]="artistaId"></app-artista>
+    </div>
+</div>
