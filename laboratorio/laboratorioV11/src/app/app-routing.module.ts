@@ -11,9 +11,7 @@ import { Aplication3Component } from './aplications/aplication3/aplication3.comp
 import { Aplication4Component } from './aplications/aplication4/aplication4.component';
 import { Aplication6Component } from './aplications/aplication6/aplication6.component';
 import { UsuarioAplicacion6Component } from './aplications/aplication6/components/usuario-aplicacion6/usuario-aplicacion6.component';
-import { UsuarioNuevoAplicacion6Component } from './aplications/aplication6/components/usuario-aplicacion6/usuario-nuevo-aplicacion6.component';
-import { UsuarioEditarAplicacion6Component } from './aplications/aplication6/components/usuario-aplicacion6/usuario-editar-aplicacion6.component';
-import { UsuarioDetalleAplicacion6Component } from './aplications/aplication6/components/usuario-aplicacion6/usuario-detalle-aplicacion6.component';
+import { NOMBRE_CLASE_PRINCIPAL_ROUTES } from './aplications/aplication6/components/usuario-aplicacion6/usuario.routes';
 
 const routes: Routes = [
   { path: 'tipescript', component: TypescriptComponent },
@@ -29,12 +27,7 @@ const routes: Routes = [
   {
     path: 'aplicacion6usuario/:id',
     component: UsuarioAplicacion6Component,
-    children: [
-      { path: 'nuevo', component: UsuarioNuevoAplicacion6Component },
-      { path: 'editar', component: UsuarioEditarAplicacion6Component },
-      { path: 'detalle', component: UsuarioDetalleAplicacion6Component },
-      { path: '**', pathMatch: 'full', redirectTo: 'nuevo' }
-    ]
+    children: NOMBRE_CLASE_PRINCIPAL_ROUTES
   },
   { path: '**', pathMatch: 'full', redirectTo: 'tipescript' }
 ];
