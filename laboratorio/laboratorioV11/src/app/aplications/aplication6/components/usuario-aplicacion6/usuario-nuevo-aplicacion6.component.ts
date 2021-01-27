@@ -18,6 +18,7 @@ export class UsuarioNuevoAplicacion6Component implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
 }
