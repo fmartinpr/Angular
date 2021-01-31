@@ -12,6 +12,8 @@ import { Aplication4Component } from './aplications/aplication4/aplication4.comp
 import { Aplication6Component } from './aplications/aplication6/aplication6.component';
 import { UsuarioAplicacion6Component } from './aplications/aplication6/components/usuario-aplicacion6/usuario-aplicacion6.component';
 import { NOMBRE_CLASE_PRINCIPAL_ROUTES } from './aplications/aplication6/components/usuario-aplicacion6/usuario.routes';
+import { Aplication7Component } from './aplications/aplication7/aplication7.component';
+import { AUTH_ROUTES } from './aplications/aplication7/components/auth.routes';
 
 const routes: Routes = [
   { path: 'tipescript', component: TypescriptComponent },
@@ -24,6 +26,11 @@ const routes: Routes = [
   { path: 'aplicacion3', component: Aplication3Component },
   { path: 'aplicacion4', component: Aplication4Component },
   { path: 'aplicacion6', component: Aplication6Component },
+  {
+    path: 'aplicacion7',
+    component: Aplication7Component,
+    children: AUTH_ROUTES
+  },
   {
     path: 'aplicacion6usuario/:id',
     component: UsuarioAplicacion6Component,

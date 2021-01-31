@@ -45,6 +45,11 @@ import { NgSwitchComponent } from './aplications/aplication6/components/ng-switc
 import { UsuarioAplicacion6Component } from './aplications/aplication6/components/usuario-aplicacion6/usuario-aplicacion6.component';
 import { UsuarioNuevoAplicacion6Component } from './aplications/aplication6/components/usuario-aplicacion6/usuario-nuevo-aplicacion6.component';
 import { NavbarAplicacion6Component } from './aplications/aplication6/components/navbar-aplicacion6/navbar-aplicacion6.component';
+import { NavbarAuth0Component } from './aplications/aplication7/components/navbar-auth0/navbar-auth0.component';
+import { Aplication7Component } from './aplications/aplication7/aplication7.component';
+import { HomeAuth0Component } from './aplications/aplication7/components/home-auth0/home-auth0.component';
+import { PreciosAuth0Component } from './aplications/aplication7/components/precios-auth0/precios-auth0.component';
+import { ProtegidaAuth0Component } from './aplications/aplication7/components/protegida-auth0/protegida-auth0.component';
 
 registerLocaleData(localeES, 'es');
 registerLocaleData(localeEn, 'en');
@@ -85,7 +90,12 @@ registerLocaleData(localeFr, 'fr');
     NgSwitchComponent,
     UsuarioAplicacion6Component,
     UsuarioNuevoAplicacion6Component,
-    NavbarAplicacion6Component
+    NavbarAplicacion6Component,
+    Aplication7Component,
+    NavbarAuth0Component,
+    HomeAuth0Component,
+    PreciosAuth0Component,
+    ProtegidaAuth0Component
   ],
   imports: [
     BrowserModule,

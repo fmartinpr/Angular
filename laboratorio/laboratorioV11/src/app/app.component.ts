@@ -38,4 +38,8 @@ export class AppComponent {
     this.isViewNavbarHeroes = false;
     this.router.navigate(['aplicacion6']);
   }
+  public viewAplication7(): void{
+    this.isViewNavbarHeroes = false;
+    this.router.navigate(['aplicacion7']);
+  }
 }
