@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './aplications/aplication7/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'laboratorioV11';
   public isViewNavbarHeroes = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, auth: AuthService) {
 
   }
 
@@ -38,7 +39,7 @@ export class AppComponent {
     this.isViewNavbarHeroes = false;
     this.router.navigate(['aplicacion6']);
   }
-  public viewAplication7(): void{
+  public viewAplication7(): void {
     this.isViewNavbarHeroes = false;
     this.router.navigate(['aplicacion7']);
   }
