@@ -50,6 +50,7 @@ import { Aplication7Component } from './aplications/aplication7/aplication7.comp
 import { HomeAuth0Component } from './aplications/aplication7/components/home-auth0/home-auth0.component';
 import { PreciosAuth0Component } from './aplications/aplication7/components/precios-auth0/precios-auth0.component';
 import { ProtegidaAuth0Component } from './aplications/aplication7/components/protegida-auth0/protegida-auth0.component';
+import { CallbackComponent } from './aplications/aplication7/components/callback/callback.component';
 
 registerLocaleData(localeES, 'es');
 registerLocaleData(localeEn, 'en');
@@ -95,7 +96,8 @@ registerLocaleData(localeFr, 'fr');
     NavbarAuth0Component,
     HomeAuth0Component,
     PreciosAuth0Component,
-    ProtegidaAuth0Component
+    ProtegidaAuth0Component,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,

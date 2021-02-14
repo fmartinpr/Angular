@@ -14,6 +14,7 @@ import { UsuarioAplicacion6Component } from './aplications/aplication6/component
 import { NOMBRE_CLASE_PRINCIPAL_ROUTES } from './aplications/aplication6/components/usuario-aplicacion6/usuario.routes';
 import { Aplication7Component } from './aplications/aplication7/aplication7.component';
 import { AUTH_ROUTES } from './aplications/aplication7/components/auth.routes';
+import { CallbackComponent } from './aplications/aplication7/components/callback/callback.component';
 
 const routes: Routes = [
   { path: 'tipescript', component: TypescriptComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
     component: UsuarioAplicacion6Component,
     children: NOMBRE_CLASE_PRINCIPAL_ROUTES
   },
+  {path: 'callback', component: CallbackComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'tipescript' }
 ];
 
