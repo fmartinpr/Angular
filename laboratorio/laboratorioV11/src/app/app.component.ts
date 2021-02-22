@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './aplications/aplication7/services/auth.service';
 
@@ -7,12 +7,15 @@ import { AuthService } from './aplications/aplication7/services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'laboratorioV11';
   public isViewNavbarHeroes = false;
 
-  constructor(private router: Router, auth: AuthService) {
+  constructor(private router: Router, private auth: AuthService) {
 
+  }
+  ngOnInit(): void {
+    this.auth.localAuthSetup();
   }
 
   public viewTipeScript(): void {
