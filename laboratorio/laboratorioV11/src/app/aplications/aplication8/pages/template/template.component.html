@@ -7,7 +7,7 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-8">
-                <input class="form-control" [(ngModel)]="usuario.nombre" name="nombre" type="text" placeholder="Nombre" required minlength="5">
+                <input class="form-control" [(ngModel)]="usuario.nombre" name="nombre" type="text" placeholder="Nombre" required minlength="5" [class.is-invalid]="nombre.touched && nombre.invalid" #nombre="ngModel">
             </div>
         </div>
 
@@ -24,8 +24,7 @@
     <div class="form-group row">
         <label class="col-2 col-form-label">Correo</label>
         <div class="col-8">
-
-            <input class="form-control" type="email" placeholder="Correo electrónico">
+            <input class="form-control" ngModel name="email" type="email" placeholder="Correo electrónico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [class.is-invalid]="correo.touched && correo.invalid" #correo="ngModel">
         </div>
     </div>
 
