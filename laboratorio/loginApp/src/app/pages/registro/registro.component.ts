@@ -11,12 +11,11 @@ export class RegistroComponent implements OnInit {
 
   public usuario: UsuarioModel;
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
     this.usuario = new UsuarioModel();
-
-    this.usuario.email = 'fmgarcia@htomail.es';
   }
 
   public onSubmit(form: NgForm): void {
