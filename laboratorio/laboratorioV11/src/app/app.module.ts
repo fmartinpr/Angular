@@ -51,6 +51,10 @@ import { HomeAuth0Component } from './aplications/aplication7/components/home-au
 import { PreciosAuth0Component } from './aplications/aplication7/components/precios-auth0/precios-auth0.component';
 import { ProtegidaAuth0Component } from './aplications/aplication7/components/protegida-auth0/protegida-auth0.component';
 import { CallbackComponent } from './aplications/aplication7/components/callback/callback.component';
+import { TemplateComponent } from './aplications/aplication8/pages/template/template.component';
+import { ReactiveComponent } from './aplications/aplication8/pages/reactive/reactive.component';
+import { Aplication8Component } from './aplications/aplication8/aplication8.component';
+import { FormsModule } from '@angular/forms';
 
 registerLocaleData(localeES, 'es');
 registerLocaleData(localeEn, 'en');
@@ -97,13 +101,17 @@ registerLocaleData(localeFr, 'fr');
     HomeAuth0Component,
     PreciosAuth0Component,
     ProtegidaAuth0Component,
-    CallbackComponent
+    CallbackComponent,
+    TemplateComponent,
+    ReactiveComponent,
+    Aplication8Component
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [HeroesService, {provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]

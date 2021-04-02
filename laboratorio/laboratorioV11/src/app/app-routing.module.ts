@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ChildrenOutletContexts } from '@angular/router';
 import { TypescriptComponent } from './aplications/typescript/typescript.component';
 import { Aplicacion1Component } from './aplications/aplicacion1/aplicacion1.component';
 import { HomeComponent } from './aplications/aplicacion2/components/home/home.component';
@@ -15,6 +15,8 @@ import { NOMBRE_CLASE_PRINCIPAL_ROUTES } from './aplications/aplication6/compone
 import { Aplication7Component } from './aplications/aplication7/aplication7.component';
 import { AUTH_ROUTES } from './aplications/aplication7/components/auth.routes';
 import { CallbackComponent } from './aplications/aplication7/components/callback/callback.component';
+import { Aplication8Component } from './aplications/aplication8/aplication8.component';
+import { FORMULARIOS_ROUTES } from './aplications/aplication8/formulario.routes';
 
 const routes: Routes = [
   { path: 'tipescript', component: TypescriptComponent },
@@ -37,6 +39,7 @@ const routes: Routes = [
     component: UsuarioAplicacion6Component,
     children: NOMBRE_CLASE_PRINCIPAL_ROUTES
   },
+  {path: 'aplicacion8', component: Aplication8Component, children: FORMULARIOS_ROUTES},
   {path: 'callback', component: CallbackComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'tipescript' }
 ];
