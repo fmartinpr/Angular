@@ -1,13 +1,13 @@
 <h4>Formularios <small> Reactivos </small></h4>
 <hr>
-<form autocomplete="off">
+<form autocomplete="off" [formGroup]="frm" (ngSubmit)="guardar()">
 
     <div>
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-8">
-                <input class="form-control" type="text" placeholder="Nombre">
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
             </div>
         </div>
 
@@ -15,7 +15,7 @@
             <label class="col-2 col-form-label">Apellido</label>
             <div class="col-8">
 
-                <input class="form-control" type="text" placeholder="Apellido">
+                <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido">
             </div>
         </div>
 
@@ -25,7 +25,7 @@
         <label class="col-2 col-form-label">Correo</label>
         <div class="col-8">
 
-            <input class="form-control" type="email" placeholder="Correo electrónico">
+            <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo">
         </div>
     </div>
 
@@ -41,3 +41,13 @@
     </div>
 
 </form>
+
+<hr>
+<pre>
+    Estado del formulario: {{frm.valid}}
+    <br>
+    Status: {{frm.status}}
+</pre>
+<pre>
+    {{frm.value | json}}
+</pre>
