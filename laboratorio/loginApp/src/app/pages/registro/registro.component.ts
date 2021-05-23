@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsuarioModel } from 'src/app/models/usuario.model';
+import Swal from 'sweetalert2';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -10,8 +13,9 @@ import { UsuarioModel } from 'src/app/models/usuario.model';
 export class RegistroComponent implements OnInit {
 
   public usuario: UsuarioModel;
+  public isRecordarUsuario: boolean;
 
-  constructor() { 
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -19,9 +23,30 @@ export class RegistroComponent implements OnInit {
   }
 
   public onSubmit(form: NgForm): void {
-    if(form.invalid){ return; }
-    console.log('Formulario enviado');
-    console.log(this.usuario);
-    console.log(form);
+    if (form.invalid) { return; }
+
+    Swal.fire({
+      allowOutsideClick: false,
+      type: 'info',
+      text: 'Espere por favor...'
+    });
+    Swal.showLoading();
+
+    this.authService.nuevoUsuario(this.usuario).subscribe(rest => {
+      if (this.isRecordarUsuario) {
+        localStorage.setItem('email', this.usuario.email);
+      }
+
+      Swal.close();
+
+      this.router.navigateByUrl('/home');
+    },
+      err => {
+        Swal.fire({
+          type: 'error',
+          title: 'Error al crear usuario',
+          text: err.error.error.message
+        });
+      });
   }
 }
