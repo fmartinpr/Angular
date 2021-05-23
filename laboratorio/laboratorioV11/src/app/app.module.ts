@@ -54,7 +54,7 @@ import { CallbackComponent } from './aplications/aplication7/components/callback
 import { TemplateComponent } from './aplications/aplication8/pages/template/template.component';
 import { ReactiveComponent } from './aplications/aplication8/pages/reactive/reactive.component';
 import { Aplication8Component } from './aplications/aplication8/aplication8.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localeES, 'es');
 registerLocaleData(localeEn, 'en');
@@ -111,7 +111,8 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [HeroesService, {provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]
