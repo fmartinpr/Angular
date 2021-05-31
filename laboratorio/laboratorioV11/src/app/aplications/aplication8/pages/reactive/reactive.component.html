@@ -33,6 +33,20 @@
         </div>
     </div>
 
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Password</label>
+        <div class="col">
+            <input class="form-control" type="password" placeholder="Password" formControlName="password1" [class.is-invalid]="isCampoValido('password1')">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Repetir password</label>
+        <div class="col">
+            <input class="form-control" type="password" placeholder="Repetir password" formControlName="password2" [class.is-invalid]="isCampoValido('password2') || isPassoworsDiferentes">
+        </div>
+    </div>
+
     <div class="form-group row" formGroupName="direccion">
         <label class="col-2 col-form-label">Direccion</label>
         <div class="form-row col">
@@ -101,4 +115,7 @@
 </pre>
 <pre>
     {{frm.value | json}}
+</pre>
+<pre>
+    {{frm.controls.apellido.errors | json}}
 </pre>

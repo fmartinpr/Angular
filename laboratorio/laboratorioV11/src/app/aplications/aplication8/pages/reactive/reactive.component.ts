@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { ValidadoresService } from '../../service/validadores.service';
 
 @Component({
   selector: 'app-reactive',
@@ -10,7 +11,7 @@ export class ReactiveComponent implements OnInit {
 
   public frm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private validadores: ValidadoresService) {
     this.frm = this.crearFormulario();
     this.crearFormulario();
     this.cargarData();
@@ -20,36 +21,46 @@ export class ReactiveComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  private crearFormulario(): FormGroup {
-    let frm = this.formBuilder.group({
-      nombre: ['', [Validators.required, Validators.minLength(5)]],
-      apellido: ['', Validators.required],
-      correo: ['', [Validators.required,
-      Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      direccion: this.formBuilder.group({
-        calle: ['', Validators.required],
-        ciudad: ['', Validators.required]
-      }),
-      pasatiempos: this.formBuilder.array([])
-    });
-
-    return frm;
+private crearFormulario(): FormGroup {
+  let frm = this.formBuilder.group({
+    nombre: ['', [Validators.required, Validators.minLength(5)]],
+    apellido: ['', [Validators.required, this.validadores.noHerrera]],
+    correo: ['', [Validators.required,
+    Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+    password1: ['', Validators.required],
+    password2: ['', Validators.required],
+    direccion: this.formBuilder.group({
+      calle: ['', Validators.required],
+      ciudad: ['', Validators.required]
+    }),
+    pasatiempos: this.formBuilder.array([])
+  },{
+    validators: this.validadores.passwordIguales('pass1','pass2')
   }
+  );
 
-  cargarData(): void {
-    this.frm.setValue({
-      nombre: 'Fermín',
-      apellido: 'Martín',
-      correo: 'fmgarcia@hotmail.es',
-      direccion: {
-        calle: 'Meridiano',
-        ciudad: 'Sevilla'
-      },
-      pasatiempos: []
-    });
+  return frm;
+}
 
-    ['Juegar ordenador','Nadar'].forEach(valor => this.pasatiempos.push(this.formBuilder.control(valor)));
-  }
+cargarData(): void {
+  this.frm.setValue({
+    nombre: 'Fermín',
+    apellido: 'Martín',
+    correo: 'fmgarcia@hotmail.es',
+    password1: '',
+    password2: '',
+    direccion: {
+      calle: 'Meridiano',
+      ciudad: 'Sevilla'
+    },
+    pasatiempos: []
+  });
+
+  ['Juegar ordenador', 'Nadar']
+    .forEach(valor => this.pasatiempos.push(
+      this.formBuilder.control(valor))
+    );
+}
 
   public guardar(): void {
     if (this.frm.invalid) {
@@ -63,7 +74,7 @@ export class ReactiveComponent implements OnInit {
         }
       });*/
       this.frm.markAllAsTouched();
-      return;
+      //return;
     }
     console.log(this.frm);
   }
@@ -87,12 +98,21 @@ export class ReactiveComponent implements OnInit {
     return this.frm.get('pasatiempos') as FormArray;
   }
 
-public agregarPasatiempo(): void {
-  this.pasatiempos.push(this.formBuilder.control('', Validators.required));
-}
+  public agregarPasatiempo(): void {
+    this.pasatiempos.push(this.formBuilder.control('', Validators.required));
+  }
 
-public borrarPasatiempo(index: number){
-  this.pasatiempos.removeAt(index);
-}
+  public borrarPasatiempo(index: number) {
+    this.pasatiempos.removeAt(index);
+  }
+
+  get isPassoworsDiferentes(){
+    const pass1 = this.frm.get('password1')?.value;
+    const pass2 = this.frm.get('password2')?.value;
+
+    return (pass1 !== pass2);
+  }
+
+
 
 }
