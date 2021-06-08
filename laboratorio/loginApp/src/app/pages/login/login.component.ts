@@ -4,7 +4,6 @@ import { UsuarioModel } from '../../models/usuario.model';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
