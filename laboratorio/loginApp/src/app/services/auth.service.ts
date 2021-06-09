@@ -12,7 +12,7 @@ export class AuthService {
   private APIKEY = 'AIzaSyBD_S_CG6qgp9SOHQtTrJQG8KNtxkhntsM';
   private userToken: string;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.leerToken();
   }
 
@@ -23,7 +23,7 @@ export class AuthService {
   //https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
 
   public logout() {
-
+    localStorage.removeItem('token');
   }
 
   public login(usuario: UsuarioModel) {
@@ -33,16 +33,16 @@ export class AuthService {
     }
 
     return this.http.post(
-      `${this.URL}signInWithPassword?key=${this.APIKEY}`,authData
+      `${this.URL}signInWithPassword?key=${this.APIKEY}`, authData
     ).pipe(
-      map( resp => {
+      map(resp => {
         this.guardarToken(resp['idToken']);
         return resp;
       })
     );
   }
 
-  public nuevoUsuario(usuario: UsuarioModel){
+  public nuevoUsuario(usuario: UsuarioModel) {
     /*const authData = {
       email: usuario.password,
       password: usuario.password,
@@ -55,26 +55,30 @@ export class AuthService {
     }
 
     return this.http.post(
-      `${this.URL}signUp?key=${this.APIKEY}`,authData
+      `${this.URL}signUp?key=${this.APIKEY}`, authData
     ).pipe(
-      map( resp => {
+      map(resp => {
         this.guardarToken(resp['idToken']);
         return resp;
       })
     );
   }
 
-  private guardarToken(idToken: string){
-      this.userToken = idToken;
-      localStorage.setItem('token',idToken);
+  private guardarToken(idToken: string) {
+    this.userToken = idToken;
+    localStorage.setItem('token', idToken);
   }
 
-  private leerToken(){
-    if(localStorage.getItem('token')){
+  private leerToken() {
+    if (localStorage.getItem('token')) {
       this.userToken = localStorage.getItem('token');
-    }else{
+    } else {
       this.userToken = '';
     }
+  }
+
+  public isAuthenticated(): boolean {
+    return this.userToken.length > 2;
   }
 
 
