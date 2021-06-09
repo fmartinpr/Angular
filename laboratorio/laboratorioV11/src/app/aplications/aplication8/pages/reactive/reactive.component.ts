@@ -21,46 +21,46 @@ export class ReactiveComponent implements OnInit {
   ngOnInit(): void {
   }
 
-private crearFormulario(): FormGroup {
-  let frm = this.formBuilder.group({
-    nombre: ['', [Validators.required, Validators.minLength(5)]],
-    apellido: ['', [Validators.required, this.validadores.noHerrera]],
-    correo: ['', [Validators.required,
-    Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-    password1: ['', Validators.required],
-    password2: ['', Validators.required],
-    direccion: this.formBuilder.group({
-      calle: ['', Validators.required],
-      ciudad: ['', Validators.required]
-    }),
-    pasatiempos: this.formBuilder.array([])
-  },{
-    validators: this.validadores.passwordIguales('pass1','pass2')
-  }
-  );
-
-  return frm;
-}
-
-cargarData(): void {
-  this.frm.setValue({
-    nombre: 'Fermín',
-    apellido: 'Martín',
-    correo: 'fmgarcia@hotmail.es',
-    password1: '',
-    password2: '',
-    direccion: {
-      calle: 'Meridiano',
-      ciudad: 'Sevilla'
-    },
-    pasatiempos: []
-  });
-
-  ['Juegar ordenador', 'Nadar']
-    .forEach(valor => this.pasatiempos.push(
-      this.formBuilder.control(valor))
+  private crearFormulario(): FormGroup {
+    let frm = this.formBuilder.group({
+      nombre: ['', [Validators.required, Validators.minLength(5)]],
+      apellido: ['', [Validators.required, this.validadores.noHerrera]],
+      correo: ['', [Validators.required,
+      Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      password1: ['', Validators.required],
+      password2: ['', Validators.required],
+      direccion: this.formBuilder.group({
+        calle: ['', Validators.required],
+        ciudad: ['', Validators.required]
+      }),
+      pasatiempos: this.formBuilder.array([])
+    }, {
+      validators: this.validadores.passwordIguales('password1', 'password2')
+    }
     );
-}
+
+    return frm;
+  }
+
+  cargarData(): void {
+    this.frm.setValue({
+      nombre: 'Fermín',
+      apellido: 'Martín',
+      correo: 'fmgarcia@hotmail.es',
+      password1: '',
+      password2: '',
+      direccion: {
+        calle: 'Meridiano',
+        ciudad: 'Sevilla'
+      },
+      pasatiempos: []
+    });
+
+    ['Juegar ordenador', 'Nadar']
+      .forEach(valor => this.pasatiempos.push(
+        this.formBuilder.control(valor))
+      );
+  }
 
   public guardar(): void {
     if (this.frm.invalid) {
@@ -73,6 +73,7 @@ cargarData(): void {
           control.markAllAsTouched();
         }
       });*/
+      console.log(this.frm.controls.nombre.errors);
       this.frm.markAllAsTouched();
       //return;
     }
@@ -106,7 +107,7 @@ cargarData(): void {
     this.pasatiempos.removeAt(index);
   }
 
-  get isPassoworsDiferentes(){
+  get isPassoworsDiferentes() {
     const pass1 = this.frm.get('password1')?.value;
     const pass2 = this.frm.get('password2')?.value;
 
