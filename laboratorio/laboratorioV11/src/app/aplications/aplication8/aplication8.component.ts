@@ -13,5 +13,3 @@ export class Aplication8Component implements OnInit {
   }
 
 }
-
-d97a3536-fd98-4615-a603-33490bcbb127

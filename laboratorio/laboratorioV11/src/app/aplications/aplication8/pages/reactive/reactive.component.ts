@@ -15,7 +15,7 @@ export class ReactiveComponent implements OnInit {
     this.frm = this.crearFormulario();
     this.crearFormulario();
     this.cargarData();
-
+    this.crearListeners();
   }
 
   ngOnInit(): void {
@@ -27,6 +27,7 @@ export class ReactiveComponent implements OnInit {
       apellido: ['', [Validators.required, this.validadores.noHerrera]],
       correo: ['', [Validators.required,
       Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      usuario: ['', , this.validadores.existeUsuario],
       password1: ['', Validators.required],
       password2: ['', Validators.required],
       direccion: this.formBuilder.group({
@@ -47,6 +48,7 @@ export class ReactiveComponent implements OnInit {
       nombre: 'Fermín',
       apellido: 'Martín',
       correo: 'fmgarcia@hotmail.es',
+      usuario: '',
       password1: '',
       password2: '',
       direccion: {
@@ -103,17 +105,22 @@ export class ReactiveComponent implements OnInit {
     this.pasatiempos.push(this.formBuilder.control('', Validators.required));
   }
 
-  public borrarPasatiempo(index: number) {
+  public borrarPasatiempo(index: number): void {
     this.pasatiempos.removeAt(index);
   }
 
-  get isPassoworsDiferentes() {
+  get isPassoworsDiferentes(): boolean {
     const pass1 = this.frm.get('password1')?.value;
     const pass2 = this.frm.get('password2')?.value;
 
     return (pass1 !== pass2);
   }
 
+  private crearListeners(): void {
+    //this.frm.valueChanges.subscribe(valor => console.log(valor));
+    //this.frm.statusChanges.subscribe(status => console.log(status));
+    this.frm.controls['nombre'].valueChanges.subscribe(valor => console.log(valor));
+  }
 
 
 }
