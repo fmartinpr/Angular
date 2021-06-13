@@ -26,21 +26,21 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
-  public login(usuario: UsuarioModel) {
-    const authData = {
-      ...usuario,
-      returnSecureToken: true
-    }
-
-    return this.http.post(
-      `${this.URL}signInWithPassword?key=${this.APIKEY}`, authData
-    ).pipe(
-      map(resp => {
-        this.guardarToken(resp['idToken'], resp['expiresIn']);
-        return resp;
-      })
-    );
+public login(usuario: UsuarioModel) {
+  const authData = {
+    ...usuario,
+    returnSecureToken: true
   }
+
+  return this.http.post(
+    `${this.URL}signInWithPassword?key=${this.APIKEY}`, authData
+  ).pipe(
+    map(resp => {
+      this.guardarToken(resp['idToken'], resp['expiresIn']);
+      return resp;
+    })
+  );
+}
 
   public nuevoUsuario(usuario: UsuarioModel) {
     /*const authData = {
@@ -84,7 +84,20 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    return this.userToken.length > 2;
+    if (this.userToken.length < 2) {
+      return false;
+    }
+
+    const expira = Number(localStorage.getItem('expira'));
+    const expiraDate = new Date();
+    expiraDate.setTime(expira);
+
+    if (expiraDate > new Date()) {
+      return true;
+    } else {
+      return false;
+    }
+
   }
 
 
