@@ -36,7 +36,7 @@ export class AuthService {
       `${this.URL}signInWithPassword?key=${this.APIKEY}`, authData
     ).pipe(
       map(resp => {
-        this.guardarToken(resp['idToken']);
+        this.guardarToken(resp['idToken'], resp['expiresIn']);
         return resp;
       })
     );
@@ -58,15 +58,21 @@ export class AuthService {
       `${this.URL}signUp?key=${this.APIKEY}`, authData
     ).pipe(
       map(resp => {
-        this.guardarToken(resp['idToken']);
+        console.log(resp);
+        this.guardarToken(resp['idToken'], resp['expiresIn']);
         return resp;
       })
     );
   }
 
-  private guardarToken(idToken: string) {
+  private guardarToken(idToken: string, expiresIn: number) {
     this.userToken = idToken;
     localStorage.setItem('token', idToken);
+
+    const dateActual = new Date();
+    dateActual.setSeconds(expiresIn);
+    localStorage.setItem('expira', dateActual.toString());
+
   }
 
   private leerToken() {
