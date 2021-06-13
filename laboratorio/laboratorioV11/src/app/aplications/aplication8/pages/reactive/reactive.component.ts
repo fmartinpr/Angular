@@ -117,8 +117,8 @@ export class ReactiveComponent implements OnInit {
   }
 
   private crearListeners(): void {
-    //this.frm.valueChanges.subscribe(valor => console.log(valor));
-    //this.frm.statusChanges.subscribe(status => console.log(status));
+    this.frm.valueChanges.subscribe(valor => console.log(valor));
+    this.frm.statusChanges.subscribe(status => console.log(status));
     this.frm.controls['nombre'].valueChanges.subscribe(valor => console.log(valor));
   }
 
