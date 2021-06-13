@@ -17,6 +17,8 @@ import { AUTH_ROUTES } from './aplications/aplication7/components/auth.routes';
 import { CallbackComponent } from './aplications/aplication7/components/callback/callback.component';
 import { Aplication8Component } from './aplications/aplication8/aplication8.component';
 import { FORMULARIOS_ROUTES } from './aplications/aplication8/formulario.routes';
+import { Aplication9Component } from './aplications/aplication9/aplication9.component';
+import { CRUD_ROUTES } from './aplications/aplication9/crud.routes';
 
 const routes: Routes = [
   { path: 'tipescript', component: TypescriptComponent },
@@ -40,6 +42,7 @@ const routes: Routes = [
     children: NOMBRE_CLASE_PRINCIPAL_ROUTES
   },
   {path: 'aplicacion8', component: Aplication8Component, children: FORMULARIOS_ROUTES},
+  {path: 'aplicacion9', component: Aplication9Component, children: CRUD_ROUTES},
   {path: 'callback', component: CallbackComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'tipescript' }
 ];

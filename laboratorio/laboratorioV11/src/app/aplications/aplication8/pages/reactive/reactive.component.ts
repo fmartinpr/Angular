@@ -22,7 +22,7 @@ export class ReactiveComponent implements OnInit {
   }
 
   private crearFormulario(): FormGroup {
-    let frm = this.formBuilder.group({
+    const frm = this.formBuilder.group({
       nombre: ['', [Validators.required, Validators.minLength(5)]],
       apellido: ['', [Validators.required, this.validadores.noHerrera]],
       correo: ['', [Validators.required,
@@ -77,7 +77,6 @@ export class ReactiveComponent implements OnInit {
       });*/
       console.log(this.frm.controls.nombre.errors);
       this.frm.markAllAsTouched();
-      //return;
     }
     console.log(this.frm);
   }
@@ -91,7 +90,7 @@ export class ReactiveComponent implements OnInit {
   public isCampoValido(nombreCampo: string): boolean {
     if (this.frm !== null && nombreCampo !== null) {
       const campo = this.frm.get(nombreCampo);
-      return campo !== null && campo.invalid && campo.touched
+      return campo !== null && campo.invalid && campo.touched;
     } else {
       return true;
     }
@@ -119,7 +118,7 @@ export class ReactiveComponent implements OnInit {
   private crearListeners(): void {
     this.frm.valueChanges.subscribe(valor => console.log(valor));
     this.frm.statusChanges.subscribe(status => console.log(status));
-    this.frm.controls['nombre'].valueChanges.subscribe(valor => console.log(valor));
+    this.frm.controls.nombre.valueChanges.subscribe(valor => console.log(valor));
   }
 
 

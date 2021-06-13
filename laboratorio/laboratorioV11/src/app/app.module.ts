@@ -55,6 +55,9 @@ import { TemplateComponent } from './aplications/aplication8/pages/template/temp
 import { ReactiveComponent } from './aplications/aplication8/pages/reactive/reactive.component';
 import { Aplication8Component } from './aplications/aplication8/aplication8.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Aplication9Component } from './aplications/aplication9/aplication9.component';
+import { HeroesCrudComponent } from './aplications/aplication9/pages/heroes/heroes.component';
+import { HeroeCrudComponent } from './aplications/aplication9/pages/heroe/heroe.component';
 
 registerLocaleData(localeES, 'es');
 registerLocaleData(localeEn, 'en');
@@ -104,7 +107,10 @@ registerLocaleData(localeFr, 'fr');
     CallbackComponent,
     TemplateComponent,
     ReactiveComponent,
-    Aplication8Component
+    Aplication8Component,
+    Aplication9Component,
+    HeroesCrudComponent,
+    HeroeCrudComponent
   ],
   imports: [
     BrowserModule,

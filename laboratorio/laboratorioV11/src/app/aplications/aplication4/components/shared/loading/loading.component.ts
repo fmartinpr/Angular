@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faSyncAlt, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-loading',
