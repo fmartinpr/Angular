@@ -12,18 +12,16 @@ export class DetalleProductoComponent implements OnInit {
 
   producto: Producto = null;
 
-  constructor(
-    private productoService: ProductoService,
+  constructor(private productoService: ProductoService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params.id;
-    this.productoService.detalle(id).subscribe(
-      data => {
-        this.producto = data;
-      },
-      error => {
+    this.productoService.detalle(id).subscribe(data => {
+      this.producto = data;
+    },
+      err => {
         this.router.navigate(['']);
       }
     );

@@ -8,18 +8,12 @@ import { ProductoService } from '../services/producto.service';
   styleUrls: ['./nuevo-producto.component.css']
 })
 export class NuevoProductoComponent implements OnInit {
-
   form: any = {};
-
   producto: Producto;
-
   creado = false;
-
   failProducto = false;
-
   mensajeFail = '';
-
-  mensajeOk = '';
+  mensajeOK = '';
 
   constructor(private productoService: ProductoService) { }
 
@@ -27,15 +21,12 @@ export class NuevoProductoComponent implements OnInit {
   }
 
   onCreate(): void {
-    this.productoService.crear(this.form).subscribe(
-      data => {
-        this.mensajeOk = 'Producto creado';
-        console.log(data);
-        this.creado = true;
-        this.failProducto = false;
-      },
+    this.productoService.crear(this.form).subscribe(data => {
+      this.mensajeOK = data.mensaje;
+      this.creado = true;
+      this.failProducto = false;
+    },
       (err: any) => {
-        console.log(err);
         this.mensajeFail = err.error.mensaje;
         this.creado = false;
         this.failProducto = true;

@@ -3,8 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {MenuItem} from 'primeng/api';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MenubarModule } from 'primeng/menubar';
+
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 // módulos para el cliente http y los formularios
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ListaProductoComponent } from './productos/lista-producto.component';
@@ -12,6 +19,12 @@ import { HomeComponent } from './home/home.component';
 import { DetalleProductoComponent } from './productos/detalle-producto.component';
 import { NuevoProductoComponent } from './productos/nuevo-producto.component';
 import { EditarProductoComponent } from './productos/editar-producto.component';
+import { LoginComponent } from './auth/login.component';
+import { interceptorProvider } from './interceptors/producto-interceptor.service';
+import { UserComponent } from './users/user.component';
+import { AdminComponent } from './users/admin.component';
+import { RegistroComponent } from './users/registro.component';
+
 
 @NgModule({
   declarations: [
@@ -20,15 +33,22 @@ import { EditarProductoComponent } from './productos/editar-producto.component';
     HomeComponent,
     DetalleProductoComponent,
     NuevoProductoComponent,
-    EditarProductoComponent
+    EditarProductoComponent,
+    LoginComponent,
+    UserComponent,
+    AdminComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MenubarModule,
+    AngularFontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
