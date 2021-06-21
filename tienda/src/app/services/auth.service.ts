@@ -27,14 +27,15 @@ export class AuthService {
 
   public hasAccess(expectedRol: String[]): Observable<boolean> {
     return this.httpClient.get<any>(this.authURL + 'authorities', cabecera).pipe(map((data:any[]) => {
+      let isAccess = false;
       data.forEach(a => {
         if(expectedRol.includes(a.authority)){
           console.log(true);
-          return true;
+          isAccess = true;
         }
       })
-      console.log(false);
-      return false;
+      console.log(isAccess);
+      return isAccess;
     }));
   }
 
