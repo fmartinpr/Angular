@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginUsuario } from '../models/login-usuario';
 import { Observable} from 'rxjs';
-import { map} from 'rxjs/operators';
 import { JwtModel } from '../models/jwt-model';
 import { NuevoUsuario } from '../models/nuevo-usuario';
+import { Rol } from '../models/Rol';
 
 const cabecera = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
@@ -25,18 +25,8 @@ export class AuthService {
     return this.httpClient.post<any>(this.authURL + 'nuevo', usuario, cabecera);
   }
 
-  public hasAccess(expectedRol: String[]): Observable<boolean> {
-    return this.httpClient.get<any>(this.authURL + 'authorities', cabecera).pipe(map((data:any[]) => {
-      let isAccess = false;
-      data.forEach(a => {
-        if(expectedRol.includes(a.authority)){
-          console.log(true);
-          isAccess = true;
-        }
-      })
-      console.log(isAccess);
-      return isAccess;
-    }));
+  public getAllRol(): Observable<Rol[]> {
+    return this.httpClient.get<Rol[]>(this.authURL + 'authorities', cabecera);
   }
 
 }

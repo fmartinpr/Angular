@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { TokenService } from '../services/token.service';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { Rol } from '../models/Rol';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +30,21 @@ export class GuardService implements CanActivate {
     return true;
   }*/
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-    const expectedRol = route.data.expectedRol;
-    return this.auth.hasAccess(expectedRol);
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    const expectedRol: any[] = route.data.expectedRol;
+    let isAccess = false;
+    return this.auth.getAllRol().pipe(map((data:Rol[]) => {
+      console.log(expectedRol);
+      let isAccess = false;
+      data.forEach((a:Rol) => {
+        if (expectedRol.includes(a.authority)) {
+          console.log(true);
+          isAccess = true;
+        }
+      })
+      if (!isAccess) this.router.navigate(['/login']);
+      return isAccess;
+    }));
   }
 
   constructor(/*private tokenService: TokenService,*/ private auth: AuthService, private router: Router) { }

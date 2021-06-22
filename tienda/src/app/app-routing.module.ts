@@ -16,9 +16,9 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'lista', component: ListaProductoComponent},
-  {path: 'detalle/:id', component: DetalleProductoComponent, canActivate:[guard], data:{expectedRol: ['admin','user']}},
-  {path: 'nuevo', component: NuevoProductoComponent, canActivate:[guard], data:{expectedRol: ['admin']}},
-  {path: 'editar/:id', component: EditarProductoComponent, canActivate:[guard], data:{expectedRol: ['admin']}},
+  {path: 'detalle/:id', component: DetalleProductoComponent, canActivate:[guard], data:{expectedRol: ['ROLE_ADMIN','ROLE_USER']}},
+  {path: 'nuevo', component: NuevoProductoComponent, canActivate:[guard], data:{expectedRol: ['ROLE_ADMIN']}},
+  {path: 'editar/:id', component: EditarProductoComponent, canActivate:[guard], data:{expectedRol: ['ROLE_ADMIN']}},
 
   // Páginas home de usuarios.
   {path: 'admin', component: AdminComponent, canActivate: [guard], data: {expectedRol: ['ROLE_ADMIN']}},
@@ -31,7 +31,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
