@@ -2,9 +2,57 @@
 <hr>
 
 <div class="row">
-    <div class="col">
-        <button class="btn btn-primary">
-            <fa-icon [icon]="faPlus"></fa-icon>
+    <div class="col text-right">
+        <button class="btn btn-primary" routerLink="/aplicacion9/heroe/nuevo">
+            <fa-icon [icon]="faPlus"></fa-icon> Agregar
         </button>
     </div>
+</div>
+
+<table *ngIf="!isCargando && heroes.length > 0" class="table mt-3 animate__animated animate__fadeIn animate__faster">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Poder</th>
+            <th scope="col">Vivo</th>
+            <th scope="col">Tools</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of heroes">
+            <th scope="row">{{item.id}}</th>
+            <th scope="row">{{item.nombre}}</th>
+            <th scope="row">{{item.poder}}</th>
+            <th scope="row">
+                <label *ngIf="item.vivo" class="badge badge-success">Vivo</label>
+                <label *ngIf="!item.vivo" class="badge badge-danger">Muerto</label>
+            </th>
+            <th scope="row">
+                <button [routerLink]="['/aplicacion9/heroe', item.id]" class="btn btn-info mr-1">
+                    <fa-icon [icon]="faPen"></fa-icon>
+                </button>
+                <button class="btn btn-danger" (click)="borrarHeroe(item)">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+            </th>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="isCargando" class="alert alert-info text-center mt-3 animate__animated animate__fadeIn animate__faster">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <fa-icon [icon]="faSyncAlt" size="2x" [spin]="true"></fa-icon>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+</div>
+
+<div *ngIf="!isCargando && !heroes.length > 0" class="alert alert-warning text-center mt-3 animate__animated animate__fadeIn animate__faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+        <fa-icon [icon]="faExclamation" size="2x"></fa-icon>
+    </p>
 </div>
