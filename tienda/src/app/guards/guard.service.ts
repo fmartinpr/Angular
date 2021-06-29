@@ -34,7 +34,6 @@ export class GuardService implements CanActivate {
     const expectedRol: any[] = route.data.expectedRol;
     let isAccess = false;
     return this.auth.getAllRol().pipe(map((data:Rol[]) => {
-      console.log(expectedRol);
       let isAccess = false;
       data.forEach((a:Rol) => {
         if (expectedRol.includes(a.authority)) {
@@ -42,11 +41,15 @@ export class GuardService implements CanActivate {
           isAccess = true;
         }
       })
-      if (!isAccess) this.router.navigate(['/login']);
+      
+      if (!isAccess){
+        this.tokenService.logOut();
+        this.router.navigate(['/login']);
+      } 
       return isAccess;
     }));
   }
 
-  constructor(/*private tokenService: TokenService,*/ private auth: AuthService, private router: Router) { }
+  constructor(private tokenService: TokenService, private auth: AuthService, private router: Router) { }
 }
 

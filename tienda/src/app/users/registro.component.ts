@@ -21,7 +21,7 @@ export class RegistroComponent implements OnInit {
   }
 
   onRegister() {
-    this.usuario = new NuevoUsuario(this.form.nombre, this.form.nombreUsuario, this.form.email, this.form.password);
+    this.usuario = new NuevoUsuario(this.form.nombre, this.form.nombreUsuario, this.form.email, this.form.password, this.form.verifyPassword);
     this.authService.registro(this.usuario).subscribe(data => {
       this.isRegister = true;
       this.isRegisterFail = false;
