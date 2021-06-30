@@ -32,8 +32,7 @@ export class HeroesCrudComponent implements OnInit {
   ngOnInit(): void {
     this.isCargando = true;
     this.heroeService.getHeroes().subscribe(
-      resp => 
-      {
+      resp => {
         this.isCargando = false;
         this.heroes = resp
       },
@@ -51,12 +50,12 @@ export class HeroesCrudComponent implements OnInit {
       icon: 'question',
       showConfirmButton: true,
       showCancelButton: true
-    }).then( resp =>{
-      if(resp.value) this.okBorrarHeroe(heroe);
+    }).then(resp => {
+      if (resp.value) this.okBorrarHeroe(heroe);
     });
   }
 
-  private okBorrarHeroe(heroe: HeroeModel){
+  private okBorrarHeroe(heroe: HeroeModel): void {
     this.heroeService.eliminarHeroe(heroe.id).subscribe(
       resp => {
         if (resp) {

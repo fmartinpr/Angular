@@ -34,7 +34,6 @@ export class HeroeCrudComponent implements OnInit {
   }
 
   private inicializarFormulario(id: string | null): void {
-    
     if(id !== null && id !== 'nuevo'){
         this.heroesService.getHeroe(id).subscribe(
           resp => {
@@ -43,7 +42,6 @@ export class HeroeCrudComponent implements OnInit {
           }
         );
     }
-    
   }
 
   public crearFormulario(): void {
