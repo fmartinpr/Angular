@@ -55,4 +55,9 @@ export class AppComponent implements OnInit {
     this.isViewNavbarHeroes = false;
     this.router.navigate(['aplicacion9']);
   }
+
+  public viewAplication10(): void{
+    this.isViewNavbarHeroes = false;
+    this.router.navigate(['aplicacion10']);
+  }
 }

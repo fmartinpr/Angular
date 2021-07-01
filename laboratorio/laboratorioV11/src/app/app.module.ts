@@ -58,6 +58,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Aplication9Component } from './aplications/aplication9/aplication9.component';
 import { HeroesCrudComponent } from './aplications/aplication9/pages/heroes/heroes.component';
 import { HeroeCrudComponent } from './aplications/aplication9/pages/heroe/heroe.component';
+import { Application10Component } from './aplications/application10/application10.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 registerLocaleData(localeES, 'es');
 registerLocaleData(localeEn, 'en');
@@ -110,7 +113,8 @@ registerLocaleData(localeFr, 'fr');
     Aplication8Component,
     Aplication9Component,
     HeroesCrudComponent,
-    HeroeCrudComponent
+    HeroeCrudComponent,
+    Application10Component
   ],
   imports: [
     BrowserModule,
@@ -118,7 +122,8 @@ registerLocaleData(localeFr, 'fr');
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [HeroesService, {provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]
