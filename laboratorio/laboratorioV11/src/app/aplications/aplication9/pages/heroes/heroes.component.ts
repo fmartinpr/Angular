@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faPlus, faSyncAlt, faExclamation, faPen, faTrash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { HeroesService } from '../../services/heroes.service';
-import { HeroeModel } from '../../models/heroe-model';
+import { HeroeModel } from '../../../../models/heroe-model';
 import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 

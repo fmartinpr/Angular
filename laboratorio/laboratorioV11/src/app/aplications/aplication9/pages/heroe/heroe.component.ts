@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faArrowLeft, faSmileWink, faFrown, faSave, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { HeroeModel } from '../../models/heroe-model';
+import { HeroeModel } from '../../../../models/heroe-model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { HeroesService } from '../../services/heroes.service';
