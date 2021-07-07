@@ -4,12 +4,14 @@ import { NavbarAppHeroesComponent } from './navbar/navbar-app-heroes.component';
 import { RouterModule } from '@angular/router';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { SwiperModule } from 'swiper/angular';
+import { PeliculasPosterGridComponent } from './peliculas-poster-grid/peliculas-poster-grid.component';
 
 @NgModule({
-  declarations: [NavbarAppHeroesComponent, SlideshowComponent],
+  declarations: [NavbarAppHeroesComponent, SlideshowComponent, PeliculasPosterGridComponent],
   exports: [
     NavbarAppHeroesComponent,
-    SlideshowComponent
+    SlideshowComponent,
+    PeliculasPosterGridComponent
   ],
   imports: [
     CommonModule,

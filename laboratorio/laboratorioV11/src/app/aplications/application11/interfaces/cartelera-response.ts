@@ -13,19 +13,19 @@ export interface Dates {
 
 export interface Movie {
     adult:            boolean;
-    backdropPath:     string;
-    genreIDS:         number[];
+    backdrop_path:     string;
+    genre_ids:         number[];
     id:               number;
-    originalLanguage: OriginalLanguage;
-    originalTitle:    string;
+    original_language: OriginalLanguage;
+    original_title:    string;
     overview:         string;
     popularity:       number;
-    posterPath:       string;
-    releaseDate:      Date;
+    poster_path:       string;
+    release_date:      Date;
     title:            string;
     video:            boolean;
-    voteAverage:      number;
-    voteCount:        number;
+    vote_average:      number;
+    vote_count:        number;
 }
 
 export enum OriginalLanguage {

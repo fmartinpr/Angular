@@ -1,30 +1,43 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterContentInit, AfterViewInit } from '@angular/core';
 import { Movie } from '../../interfaces/cartelera-response';
-// import Swiper core and required modules
-import SwiperCore from 'swiper/core';
+import { Swiper } from 'swiper';
 
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.component.html',
-  styleUrls: ['../../application11.component.css']
+  styleUrls: ['../../application11.component.css', './slideshow.component.css']
 })
-export class SlideshowComponent implements OnInit {
+export class SlideshowComponent implements OnInit, AfterViewInit{
 
   @Input() movies: Movie[];
+  private swiper?: Swiper;
 
   constructor() { 
     this.movies = [];
   }
 
   ngOnInit(): void {
-    console.log(this.movies);
+    
   }
 
-  onSwiper(swiper: string) {
-    console.log(swiper);
+  ngAfterViewInit(): void {
+    this.swiper = new Swiper('.swiper-container', {
+      loop: true
+    });
+
+    setInterval(
+      () => this.swiper?.slideNext(1000),
+      10000
+    );
+    
   }
-  onSlideChange() {
-    console.log('slide change');
+
+  public onSlideNext(): void{
+    this.swiper?.slideNext(1000);
+  }
+
+  public onSlidePrev(): void{
+    this.swiper?.slidePrev(1000);
   }
 
 }
