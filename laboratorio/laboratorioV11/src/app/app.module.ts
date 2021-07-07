@@ -65,7 +65,9 @@ import { LoginComponent } from './aplications/application10/components/login/log
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
+import { Application11Component } from './aplications/application11/application11.component';
+import { ComponentsModule } from './aplications/application11/components/components.module';
+import { PagesModule } from './aplications/application11/pages/pages.module';
 
 registerLocaleData(localeES, 'es');
 registerLocaleData(localeEn, 'en');
@@ -121,7 +123,8 @@ registerLocaleData(localeFr, 'fr');
     HeroeCrudComponent,
     Application10Component,
     ChatComponent,
-    LoginComponent
+    LoginComponent,
+    Application11Component
   ],
   imports: [
     BrowserModule,
@@ -131,7 +134,9 @@ registerLocaleData(localeFr, 'fr');
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ComponentsModule,
+    PagesModule
   ],
   providers: [HeroesService, {provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]

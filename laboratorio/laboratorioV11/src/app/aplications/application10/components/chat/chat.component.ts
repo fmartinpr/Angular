@@ -31,7 +31,7 @@ ngOnInit(): void {
     }
   }
 
-  public isMsgUsuario(uid: string): boolean{
+  public isMsgUsuario(uid: string | undefined): boolean{
     return uid === this.chatService.usuario.uid;
   }
 
